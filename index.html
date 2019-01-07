@@ -146,7 +146,7 @@
                 </div>
                 <p class="card-text">Copie utilizando o botão de copiar e cole na área especifica de assinatura do seu
                     e-mail</p>
-                <a id="btn-copiar" href="#" class="btn btn-primary">Copiar<i class="far fa-copy" id="btn-sec"></i></a>
+                <button id="btn-copiar" class="btn btn-primary">Copiar<i class="far fa-copy" id="btn-sec"></i></button>
                 <button id="btn-help2" class="btn btn-help btn-help-in" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-question-circle"></i></button><br><br>
             </div>
         </div>
@@ -157,7 +157,7 @@
     <script src="js/jquery.mask.js"></script>
     <script>
         //Botão de copiar assinatura
-        $("#btn-copiar").click(function () {
+        $("#btn-copiar").on("click", function () {
         console.log("Entrou");
            $('#assinatura').show();
            var x = $("#divAssinatura").html();
