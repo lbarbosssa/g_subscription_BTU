@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <link rel="shortcut icon" href="https://www.braspress.com/wp-content/themes/braspress/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <title>Gerador de Assinatura</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Funcionamento do Gerador</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    O gerador de assinaturas foi desenvolvido para facilitar a criação de assinaturas de email.<br><br>
+                    O funcionamento é simples, é necessário apenas preencher os campos do formulário, e clicar no botão
+                    <b>Gerar Assinatura</b>.
+                    <hr>
+                    Abaixo exemplo de preencimento dos campos:<br>
+                    <span class="ex-modal">Nome do colaborador;</span><br>
+                    <span class="ex-modal">Cargo ou Função;</span><br>
+                    <span class="ex-modal">Telefone com DDD;</span><br>
+                    <span class="ex-modal">Caso preferir não inserir o ramal, pode deixar em branco;</span><br>
+                    <span class="ex-modal">O inicio do seu e-mail ex: ti.suporte.</span><br>
+                    <hr>
+                    Após clicar em gerar, uma pré-visualização da sua assinatura aparecerá logo a baixo do formulário.<br>
+                    Utilize o botão copiar, para que a cópia do HTML da assinatura fique disponibilizada na sua área de
+                    transferências.<br>
+                    Agora é só colar o código HTML copiado, nas configurações de assinaturas do seu gerenciador de
+                    e-mail.
+                    Caso não souber onde colar o HTML da assinatura, utilize o botão <b>Obter o Manual</b>.
+                    <hr>
+                    Se desejar, for necessário adicionar outro campo em sua assinatura, ou encontrou alguma
+                    inconformidade, entre em contato com o suporte no telefone +55 (11) 3429-3225.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Obter o Manual</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="geral">
+       
+        <button id="btn-help1" class="btn btn-help btn-help-su" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-question-circle"></i></button><br><br>
+
+        <form class="needs-validation" novalidate onsubmit="return false">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="nomeSobrenome">Nome</label>
+                    <input type="text" class="form-control" id="nomeSobrenome" placeholder="Seu nome e sobrenome"
+                        required>
+                    <!-- <div class="valid-feedback">
+                        Ok!
+                    </div> -->
+                    <div class="invalid-feedback">
+                        Informe o seu nome.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" class="form-control" id="cargo" placeholder="Seu Cargo" required>
+                    <!-- <div class="valid-feedback">
+                        Ok!
+                    </div> -->
+                    <div class="invalid-feedback">
+                        Informe o seu cargo.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="telefone">Telefone</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">+55</span>
+                        </div>
+                        <input type="text" class="form-control" id="telefone" placeholder="(11) 1234-5678"
+                            aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Informe o telefone.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="ramal">Ramal</label>
+                    <input type="number" class="form-control" id="ramal" placeholder="Seu ramal ou do setor">
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="col-md-6 mb-3">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="email" placeholder="filial.email" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="emailLabel">@braspress.com</span>
+                        </div>
+                        <div class="invalid-feedback">
+                            Informe seu email.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div> -->
+
+                    <button id="btn-geral" class="btn btn-primary btn-block btn-su" type="submit">Gerar Assinatura<i class="fas fa-bolt" id="btn-sec"></i></button>
+
+                </div>
+        </form>
+
+        <div class="card border-success mb-3" id="prev">
+            <div class="card-header bg-transparent border-success">Sua assinatura está pronta</div>
+            <div class="card-body text-secondary">
+                <div id="divAssinatura">
+                    <font size="2" face="Helvetica" color="#003399"><b>Att.</b><br> <br> <font size="2" face="Helvetica" color="#000000"><b> <span id="nomeAss"></span> </b></font><br> <img style="width: 134px; height: 28px;" alt="Braspress" src="https://www.braspress.com.br/img/uploads/assinatura01.jpg" moz-do-not-send="true"> <br> <font size="2" face="Helvetica" color="#999999"><b> <span id="funcaoAss"></span> </b></font></a><br></a> <font size="2" face="Calibri" color="#999999"><b>Fone: +55 <span id="foneAss"></span><span id="ramalAss"></span> </font><br style="font-family: Verdana;"> <font size="2" face="Calibri" color="#999999">E-mail: <font size="2" face="Calibri" color="##0000FF"><u><b><span id="emailAss"></span>@braspress.com</b></u></font><br> <font size="2" face="Calibri" color="#999999"><b>Acesse nosso site: <a href="http://www.braspress.com">https://www.braspress.com</a></font></b><br><img style="width: 380px; height: 123px;" alt="Nosso Grupo" src="https://www.braspress.com.br/img/uploads/assinatura02.gif" moz-do-not-send="true"><br><br></body></html>
+                </div>
+                <p class="card-text">Copie utilizando o botão de copiar e cole na área especifica de assinatura do seu
+                    e-mail</p>
+                <a id="btn-copiar" href="#" class="btn btn-primary">Copiar<i class="far fa-copy" id="btn-sec"></i></a>
+                <button id="btn-help2" class="btn btn-help btn-help-in" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-question-circle"></i></button><br><br>
+            </div>
+        </div>
+        <input id="assinatura" type="text" class="disabled">
+
+    </div>
+    <script src="js/jquery-3.3.1.min.js.js"></script>
+    <script src="js/jquery.mask.js"></script>
+    <script>
+        //Botão de copiar assinatura
+        $("#btn-copiar").click(function () {
+        console.log("Entrou");
+           $('#assinatura').show();
+           var x = $("#divAssinatura").html();
+           $("#assinatura").val("<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title></head><body>" + x + "</body></html>");
+           $("#assinatura").select();
+           document.execCommand("copy");
+           console.log("conteudo copiado = " + x);
+           $('#assinatura').hide();
+        });
+
+        //Mascara do campo de tel
+        $('#telefone').mask('(00) 0000-0000');
+
+        //Animação do botão de help
+        var btn_help = $('#btn-help1');
+        btn_help.on("mouseenter", function(){
+           btn_help.animate({
+                    fontSize: "30px",
+    
+                }, 100)
+        });
+        btn_help.on("mouseleave", function(){
+           btn_help.animate({
+                    fontSize: "25px",
+    
+                }, 100)
+        });
+        
+        var dados = [];
+        
+        var preview = $('#prev');
+        preview.hide();
+        
+        //Validação dos formularios
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        } else {
+                            for (var i = 0; i < this.elements.length; i++) {
+                                dados[i] = this.elements[i].value
+                            }
+                            if (dados[3] !== "")
+                                dados[3] = " - Ramal " + dados[3];
+                            console.log(dados);
+                            $('#nomeAss').html(dados[0]);
+                            $('#funcaoAss').html(dados[1]);
+                            $('#foneAss').html(dados[2]);
+                            $('#ramalAss').html(dados[3]);
+                            $('#emailAss').html(dados[4]);
+                            preview.fadeIn();
+
+
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+    </script>
+</head>
+
+</html>

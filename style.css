@@ -1,0 +1,48 @@
+#geral{
+  margin-top: 30px;
+}
+.ex-modal{
+  margin-left: 15px;
+  font-style: italic;
+  text-align: justify
+}
+.btn-help{
+  font-size: 25px ;
+  color: #EB8823;
+}
+.btn-help:hover{
+ color: #ff8002;
+}
+
+.btn-help-su{
+  float: right;
+}
+
+
+#emailLabel, #telefone{
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.btn-primary{
+  background-color: #004E9A!important;
+  border-color: #004E9A!important;
+}
+.btn-primary:hover{
+  background-color: #003E7B!important;
+  border-color: #003E7B!important;
+}
+#assinatura{
+  display: none;
+}
+#btn-sec{
+  padding-left: 5px!important;
+}
+
+
+@media only screen and (min-width: 767px) {
+    .btn-su {
+      margin-top: 31px!important;
+    }
+  }
+  
