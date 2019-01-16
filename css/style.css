@@ -4,8 +4,25 @@
 .ex-modal{
   margin-left: 15px;
   font-style: italic;
-  text-align: justify
 }
+.idioma-modal{
+  background-color: #FFF;
+  border-color: #FFF;
+  border:none;
+  color: #004E9A
+}
+.idioma-modal:hover{
+  color: #003E7B;
+  text-decoration: underline;
+}
+
+#modal-texto-btn-2{
+  color: #fff;
+}
+#modal-texto-btn-2:hover{
+  text-decoration: none
+}
+
 .btn-help{
   font-size: 25px ;
   color: #EB8823;
@@ -51,6 +68,10 @@ button:focus {
   color: #fff!important;
   border-color: #EB8823!important;
 }
+#prev{
+  margin-left: 5px
+}
+
 #assinatura{
   display: none;
 }
@@ -73,7 +94,7 @@ button:focus {
     }
   }
 
-  @media only screen and (max-width: 512px) {
+  @media only screen and (max-width: 538px) {
     .btn-layout-ass-Banco-Urbano{
       margin: 10px 0 10px 0!important;
     }

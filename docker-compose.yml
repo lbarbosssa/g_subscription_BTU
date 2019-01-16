@@ -1,0 +1,15 @@
+version: '2'
+services:
+  gerador-assinatura-fe:
+    ports:
+      - "9300:80"
+    image: registry.braspress.com.br/braspress/gerador-assinatura-fe
+    stdin_open: true
+    volumes:
+    - /etc/localtime:/etc/localtime
+    dns:
+    - 172.16.20.1
+    domainname: braspress.com.br
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always

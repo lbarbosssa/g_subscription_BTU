@@ -27,45 +27,50 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Funcionamento do Gerador</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="modal-titulo">Funcionamento do Gerador</h5>
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="idioma-modal" id="modal-btn-idioma"></button>
+                    </div>
                 </div>
                 <div class="modal-body">
-                    O gerador de assinaturas foi desenvolvido para facilitar a criação de assinaturas de email.<br><br>
-                    O funcionamento é simples, é necessário apenas preencher os campos do formulário, e clicar no botão
-                    <b>Gerar Assinatura</b>.
+                    <span id="modal-texto-1"></span>
                     <hr>
-                    Abaixo exemplo de preencimento dos campos:<br>
-                    <span class="ex-modal">Nome do colaborador;</span><br>
-                    <span class="ex-modal">Cargo ou Função;</span><br>
-                    <span class="ex-modal">Telefone com DDD;</span><br>
-                    <span class="ex-modal">Caso preferir não inserir o ramal, pode deixar em branco;</span><br>
-                    <span class="ex-modal">O inicio do seu e-mail ex: ti.suporte.</span><br>
+                    <span id="modal-texto-2"></span>
+                    <div class="ex-modal" id="modal-exemplo-1">        
+                    </div>
                     <hr>
-                    Após clicar em gerar, uma pré-visualização da sua assinatura aparecerá logo a baixo do formulário.<br>
-                    Selecione a sua assinatura inteira e a copie.<br>
-                    Agora é só colar o conteúdo copiado, nas configurações de assinaturas do seu gerenciador de
-                    e-mail.
-                    Caso não souber onde colar a assinatura, utilize o botão <b>Obter o Manual</b>.
-                    <hr>
-                    Se desejar, for necessário adicionar outro campo em sua assinatura, ou encontrou alguma
-                    inconformidade, entre em contato com o suporte no telefone +55 (11) 3429-3225.
+                    <span id="modal-texto-3"></span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Obter o Manual</button>
+
+                    <button type="button" class="btn btn-secondary modal-btn-footer" data-dismiss="modal"><span id="modal-texto-btn-1"></span></button>
+                    <button type="submit" class="btn btn-primary modal-btn-footer" id="btn-obter-manual"><span id="modal-texto-btn-2"></span></button>
+                    <a href="manuais/Manual_Assinatura_PT.pdf" target="_blank" download id="modal-ancora-manual"></a>
+                    
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container" id="geral">
-        
+
         <button type="button" class="btn btn-outline-primary btn-layout-ass-Braspress btn-layout ativado">Braspress<i class="fas fa-truck"></i></button>
         <button type="button" class="btn btn-outline-primary btn-layout-ass-Banco-Urbano btn-layout">Banco Urbano<i class="fas fa-university"></i></button>
-        <button type="button" class="btn btn-outline-primary btn-layout-ass-Argentina btn-layout">Braspress Argentina<i class="fas fa-globe-americas"></i></button>
+
+        <!-- Example single danger button -->
+    <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary dropdown-toggle btn-layout-ass-Argentina dropdown-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Braspress Argentina<i class="fas fa-globe-americas"></i>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item filial-arg" onclick="setarFilialArg('bue')">Buenos Aires</a>
+                <a class="dropdown-item filial-arg" onclick="setarFilialArg('cor')">Córdoba</a>
+                <a class="dropdown-item filial-arg" onclick="setarFilialArg('ros')">Sucursal Rosario</a>
+            </div>
+        </div>
         
         <button id="btn-help1" class="btn btn-help btn-help-su" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-question-circle"></i></button><br><br>
         
@@ -167,21 +172,48 @@
             <div class="card-body text-secondary">
                 <hr>
                 <div id="divAssinatura">
-                            <div id="ass-pronta" style="margin-left: 8px;">
-                                    <p id="att-ass-preview"><b><span id="att-ass-preview-text"></span></b></p>
-                                    <p id="nome-ass-preview"><b><span id="nomeAss"></span></b></p> 
-                                    <img id="img-topo-preview" moz-do-not-send="true">
-                                    <p id="funcao-ass-preview"><b><span id="funcaoAss"></span></b></p>
-                                    <p id="fone-ass-preview"><b><span id="fone-ass-preview-name"></span><span id="foneAss"></span><span id="ramalAss"></span></b></p>
-                                    <p id="cel-ass-preview"><b><span id="cel-ass-preview-name"></span><span id="celAss"></span><span id="ramalAss"></span></b></p>
-                                    <p id="email-ass-preview"><b><span id="email-ass-preview-text" style="color: #999999"></span> <u><a id="emailAss-ancora"><span id="emailAss"></a></span></u></b></p>
-                                    <p id="site-ass-preview"><b><span id="siteAss"></span> <a id="site-ass-preview-ancora"></a></b></p>
-                                </div> 
-                                    <img id="img-rodape-preview" moz-do-not-send="true"><br>
+                            
+                                <table cellspacing="0" cellpadding="1" width="600px" style="width: 600px; font-size: 12px; color: #999999; font-family: Helvetica;">    
+                                    <tr id="att-ass-preview">
+                                        <td><font id="font-att-ass"><b><span id="att-ass-preview-text"></span></b></font></td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr id="nome-ass-preview">
+                                        <td><font id="font-nome-ass"><b><span id="nomeAss"></span></b></font></td>
+                                    </tr>
+                                    <tr id="img-topo-preview-tr">
+                                        <td><img id="img-topo-preview" moz-do-not-send="true"></td>
+                                    </tr>
+                                    <tr id="funcao-ass-preview">
+                                        <td><font id="font-funcao-ass"><b><span id="funcaoAss"></span></b></font></td>
+                                    </tr>
+                                    <tr id="fone-ass-preview">
+                                        <td><font id="font-fone-ass"><b><span id="fone-ass-preview-name"></span><span id="foneAss"></span><span id="ramalAss"></span></b></font></td>
+                                    </tr>
+                                    <tr id="cel-ass-preview">
+                                        <td><font id="font-cel-ass"><b><span id="cel-ass-preview-name"></span><span id="celAss"></span></b></font></td>
+                                    </tr>
+                                    <tr id="email-ass-preview">
+                                        <td><font id="font-label-email-ass"><b><span id="email-ass-preview-text"></span></font> <u><font id="font-end-email-ass"><a id="emailAss-ancora"><span id="emailAss"></a></span></font></u></b></td>
+                                    </tr>
+                                    <tr id="site-ass-preview">
+                                        <td><font id="font-label-site-ass"><b><span id="siteAss"></span></font> <font id="font-end-site-ass"><a id="site-ass-preview-ancora"></a></font></b></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><img id="img-rodape-preview" moz-do-not-send="true"></td>
+                                    </tr>
+                                    <tr>
+                                        <td >&nbsp;</td>
+                                    </tr>
+
+                                </table>    
+                                       
                 </div>
                 <hr>
                 <p class="card-text" id="texto-preview">Selecione sua assinatua copie e cole nas configurações de assinaturas do seu gerenciador de e-mail.</p>
-                <!-- <button id="btn-copiar" class="btn btn-primary">Copiar<i class="far fa-copy" id="btn-sec"></i></button> -->
                 <br>
             </div>
         </div>
@@ -190,223 +222,7 @@
     </div>
     <script src="js/jquery-3.3.1.min.js.js"></script>
     <script src="js/jquery.mask.js"></script>
-    <script>
-        /*
-        //Botão de copiar assinatura
-        $("#btn-copiar").on("click", function () {
-        console.log("Entrou");
-           $('#assinatura').show();
-           var x = $("#divAssinatura").html();
-           $("#assinatura").val("<html><head><meta content=\"text/html; charset=ISO-8859-1\" http-equiv=\"content-type\"><title></title></head><body>" + x + "</body></html>");
-           $("#assinatura").select();
-           document.execCommand("copy");
-           console.log("conteudo copiado = " + x);
-           $('#assinatura').hide();
-        });*/
-
-        //Mascara do campo de tel e ramal
-        $('#telefone').mask('(00) 0000-0000');
-        $('#ramal').mask('0000');
-        
-        //Mascara do campo de celular
-        var behavior = function (val) {
-            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-        },
-        options = {
-            onKeyPress: function (val, e, field, options) {
-                field.mask(behavior.apply({}, arguments), options);
-            }
-        };
-        $('#celular').mask(behavior, options);
-          
-
-
-        //Animação do botão de help
-        var btn_help = $('#btn-help1');
-        btn_help.on("mouseenter", function(){
-           btn_help.animate({
-                    fontSize: "30px",
-                }, 100)
-        });
-        btn_help.on("mouseleave", function(){
-           btn_help.animate({
-                    fontSize: "25px",
-                }, 100)
-        });
-
-        //botão de mudar layout da assinatura
-        btnLayout = $(".btn-layout");
-        layoutAss = "Braspress";
-        console.log(layoutAss); 
-        btnLayout.on("click", function(){
-            btnLayout.removeClass('ativado');
-            $(this).addClass('ativado');
-            layoutAss = $(this)[0].innerText;
-            preview.fadeOut(100);
-            //$("#form-ass")[0].reset();
-            $("#form-ass").removeClass("was-validated");
-            layoutAssinatura(layoutAss);
-            $("form").hide();
-            $("form").fadeIn(410);
-        })
-        
-        //Layout da Assinatura
-        function layoutAssinatura(layout){
-            $("#img-topo-preview").attr({src: "imgs/img_topo.jpg", style: "width: 134px; height: 28px;", alt: "Braspress"});
-            $("#att-ass-preview").attr("style", "font-size: 15px; color: #003399; font-family: Helvetica; margin-bottom: 40px");
-            $("#att-ass-preview-text").html("Att.")
-            $("#funcao-ass-preview").show();
-            $("#funcao-ass-preview").attr("style", "font-size: 12px; color: #999999; font-family: Helvetica; margin: 1px 0 0px 0");
-            $("#site-ass-preview").attr("style", "font-size: 12px; font-family: Helvetica; margin: 1px 0 0px 0");
-            $("#fone-ass-preview-name").html("Telefone: ");
-            $("#email-ass-preview-text").html("E-mail");
-            $('#cel-ass-preview-name').hide();
-            $("#siteAss").html("Acesse nosso site: ");
-            $("#siteAss").attr("style", "color: #999999")
-            $("#site-ass-preview-ancora").attr("href", "http://www.braspress.com");
-            $("#site-ass-preview-ancora").html("braspress.com");
-            $("#nome-ass-preview").attr("style", "font-size: 13px; color: #000000; font-family: Helvetica; margin: -17px 0 -1px 0");
-            $("#fone-ass-preview, #cel-ass-preview").attr("style", "font-size: 12px; color: #999999; font-family: Helvetica; margin: 1px 0 0px 0");
-            $("#email-ass-preview").attr("style", "font-size: 12px; color: #999999; font-family: Helvetica; margin: 1px 0 0px 0");
-            $("#email-ass-preview-text").attr("style", "color: #999999;");
-            if (layout == "Braspress"){
-                modeloFormulario(layoutAss);
-                $("#ass-pronta").attr("style", "margin-left: 8px;");
-                $("#img-topo-preview").show();
-                $("#funcao-ass-preview").show();
-                $("#site-ass-preview").show();
-                $("#img-rodape-preview").attr({src: "imgs/rodape_padrao.gif", style: "width: 380px; height: 123px;", alt: "Nosso Grupo"});
-            } else if(layout == "Banco Urbano"){
-                modeloFormulario(layoutAss);
-                $("#ass-pronta").attr("style", "margin-top: 30px;");
-                $("#att-ass-preview").hide();
-                $("#img-topo-preview").hide();
-                $("#cargo").attr("disabled", "disabled");
-                $("#funcao-ass-preview").hide();
-                $("#emailLabel").html("@bancourbano.com.br");
-                $("#nome-ass-preview").attr("style", "font-size: 13px; color: #365F9E; font-family: Helvetica; margin: -17px 0 -1px 0");
-                $("#fone-ass-preview, #cel-ass-preview").attr("style", "font-size: 12px; color: #365F9E; font-family: Helvetica; margin: 1px 0 0px 0");
-                $("#email-ass-preview").attr("style", "font-size: 12px; color: #365F9E; font-family: Helvetica; margin: 1px 0 0px 0");
-                $("#email-ass-preview-text").attr("style", "color: #365F9E;");
-                $("#site-ass-preview").hide();
-                $("#img-rodape-preview").attr({src: "imgs/rodape_urbano.png", style: "", alt: "Banco Urbano"});
-            } else if (layout == "Braspress Argentina"){
-                modeloFormulario(layoutAss);
-                $("#fone-ass-preview-name").html("Teléfono: ");
-                $("#email-ass-preview-text").html("Correo electrónico");
-                $("#siteAss").html("Accede a nuestro sitio: ");
-                $("#site-ass-preview-ancora").attr("href", "http://www.braspress.com.ar");
-                $("#site-ass-preview-ancora").html("braspress.com.ar");
-                $("#img-rodape-preview").attr({src: "imgs/rodape_argentina.png", style: "width: 279px; height: 89px;", alt: "Nosso Grupo"});
-            }
-        }
-        
-        //Guarda os dados do formulario
-        var dados = [];
-        
-        //Preview da assinatura
-        var preview = $('#prev');
-        preview.hide();
-        
-        //Validação dos formularios e pre-visualização
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        } else {
-                            layoutAssinatura(layoutAss);
-                            for (var i = 0; i < this.elements.length; i++) {
-                                dados[i] = this.elements[i].value
-                            }
-                            if (dados[3] !== "" && layoutAss == "Braspress Argentina")
-                                dados[3] = " - Interno " + dados[3];
-                            else if (dados[3] !== "" && layoutAss == "Braspress")
-                                dados[3] = " - Ramal " + dados[3];
-                            else if (dados[3] !== "" && layoutAss == "Banco Urbano")
-                                dados[3] = " - Ramal " + dados[3];
-                            
-                            if (dados[4] !== "")
-                                 $('#cel-ass-preview-name').show();
-                            
-
-                            console.log(dados);
-                            $('#nomeAss').html(dados[0]);
-                            $('#funcaoAss').html(dados[1]);
-                            $('#foneAss').html($("#ddiLabelFone").html() + " " + dados[2]);
-                            $('#ramalAss').html(dados[3]);
-                            $('#celAss').html(dados[4]);
-                            $("#cel-ass-preview-name").html($("#label-celular").html() + ": " + " " + $("#ddiLabelCel").html() + " ");
-                            $('#emailAss-ancora').attr("href", "mailto:" + dados[4] + $("#emailLabel").html());
-                            $('#emailAss').html(dados[5] + $("#emailLabel").html());
-                            preview.fadeIn();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-        
-        //Alterar modelo de formulario
-        modeloFormulario(layoutAss);
-        function modeloFormulario(layout){
-            $("#cargo").removeAttr("disabled");
-            if (layout == "Braspress Argentina"){
-                //Labels e placeholders
-                $("#label-nome").html("Nombre");
-                $("#nomeSobrenome").attr("placeholder", "Su nombre y apellido");
-                $("#label-cargo").html("Función");
-                $("#cargo").attr("placeholder", "Su función");
-                $("#label-telefone").html("Teléfono");
-                $("#ddiLabelFone, #ddiLabelCel").html("+54");
-                $("#label-ramal").html("Interno");
-                $("#ramal").attr("placeholder", "Su interno o de lo sector");
-                $("#label-celular").html("Telemóvel");
-                $("#label-email").html("Correo Electrónico");
-                $("#emailLabel").html("@braspress.com");
-                $("#email").attr("placeholder", "Su correo electrónico");
-                $("#btn-gerar").html("Generar Firmas");
-                //Textos do preview
-                $("#text-card-header").html("Su firma está lista");
-                $("#texto-preview").html("Seleccione su firma y copie en la configuración de firmas de su gestor de correo electrónico.");
-                //Mensagem de Erro
-                $("#invalid-nome").html("Introduzca su nombre.");
-                $("#invalid-cargo").html("Informe su cargo.");
-                $("#invalid-telefone").html("Introduzca el teléfono.");
-                $("#invalid-email").html("Introduzca su correo electrónico.");
-            }else{
-                //Labels e placeholders
-                $("#label-nome").html("Nome"); 
-                $("#nomeSobrenome").attr("placeholder", "Seu nome e sobrenome");
-                $("#label-cargo").html("Cargo");
-                $("#cargo").attr("placeholder", "Seu Cargo");
-                $("#label-telefone").html("Telefone");
-                $("#ddiLabelFone, #ddiLabelCel").html("+55");
-                $("#ramal").attr("placeholder", "Seu ramal ou do setor");
-                $("#label-celular").html("Celular");
-                $("#label-email").html("E-mail");
-                $("#emailLabel").html("@braspress.com");
-                $("#email").attr("placeholder", "Seu e-mail");
-                $("#btn-gerar").html("Gerar assinatura");
-                //Textos do preview
-                $("#text-card-header").html("Sua assinatura está pronta");
-                $("#texto-preview").html("Selecione sua assinatua copie e cole nas configurações de assinaturas do seu gerenciador de e-mail.");
-                //Mensagem de erro
-                $("#invalid-nome").html("Informe o seu nome.");
-                $("#invalid-cargo").html("Informe o seu cargo.");
-                $("#invalid-telefone").html("Informe o telefone.");
-                $("#invalid-email").html("Informe seu email.");
-
-            }
-        }
-
-    </script>
+    <script src="js/scripts.js?v=4"></script>
 </head>
 
 </html>
