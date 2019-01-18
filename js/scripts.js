@@ -170,6 +170,15 @@ preview.hide();
                     $('#emailAss').html(dados[5] + $("#emailLabel").html());
                     preview.fadeIn();
                 }
+                if ($("#email").val().indexOf("@") > -1 && layoutAss == "Braspress Argentina"){
+                    $("#invalid-email").html("Sólo introduzca el inicio de su correo electrónico, sin el dominio.");
+                }else if ($("#email").val().indexOf("@") > -1 && layoutAss != "Braspress Argentina"){
+                    $("#invalid-email").html("Informe apenas o inicio do seu e-mail, sem o domínio.");
+                }else if (layoutAss == "Braspress Argentina"){
+                    $("#invalid-email").html("Introduzca su correo electrónico.");
+                }else if (layoutAss != "Braspress Argentina"){
+                    $("#invalid-email").html("Informe seu email.");
+                }
                 form.classList.add('was-validated');
             }, false);
         });
